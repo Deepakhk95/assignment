@@ -1,11 +1,9 @@
 pipeline {
     agent any
-
-    enviornment {
+    enviornment{
         BRANCH = 'main'
         GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
     }
-
     stages{
         stage('Test') {
             steps{
@@ -22,9 +20,7 @@ pipeline {
                 echo "this is test2 stage"
                 echo "$BRANCH $GIT_REPO"
                 '''
-
             }
         }
     }
-
 }
