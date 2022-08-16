@@ -11,7 +11,7 @@ pipeline {
                 echo"this is test1 stage"
             }
         }
-        stage1('Test2'){
+        stage1('Test2') {
             steps{
                 sh '''
                 #!/bin/bash
