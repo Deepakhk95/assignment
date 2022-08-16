@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    environment{
+        BRANCH = 'main'
+        GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
+    }
+    stages{
+        stage('Test') {
+            steps{
+                git branch: env.BRANCH, url: env.GIT_REPO 
+                echo"this is test1 stage"
+            }
+        }
+        stage('Test2') {
+            steps {
+                sh '''
+                #!/bin/bash
+                pwd 
+                ls
+                echo "this is test2 stage"
+                echo "$BRANCH $GIT_REPO"
+                '''
+            }
+        }
+    }
+}
