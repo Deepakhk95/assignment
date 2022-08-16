@@ -1,26 +1,46 @@
 pipeline {
-    agent any
-    environment{
-        BRANCH = 'main'
+     agent any
+       environment {
+        BRANCH = 'master'
         GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
     }
-    stages{
-        stage('Test') {
-            steps{
-                git branch: env.BRANCH, url: env.GIT_REPO 
-                echo"this is test1 stage"
+       stages {
+        when {
+                branch 'master'
+                beforeAgent true
             }
-        }
-        stage('Test2') {
-            steps {
-                sh '''
-                #!/bin/bash
-                pwd 
-                ls
-                echo "this is test2 stage"
-                echo "$BRANCH $GIT_REPO"
-                '''
-            }
+          
+          stage('TESTING') {
+                   stage('TESTING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'master') 
+                        {						  
+                          sh 'echo "This is a TESTING1 stage"'
+                          sh 'sleep 3'
+						}
+						else {
+						   error("Build failed because of this and that")
+                       }
+                    }
+                  }
+				  }
+						stage('TESTING2') {
+                     
+                            steps {
+                                 script {
+								 if(env.BRANCH == 'master') 
+                                 {						  
+                                      sh 'echo "This is a TESTING1 stage"'
+                                      sh 'sleep 3'
+						         }
+						           else {
+						             error("Build failed because of this and that")
+                       }
+                       
+						    }
+                        }
+                }    
         }
     }
 }
