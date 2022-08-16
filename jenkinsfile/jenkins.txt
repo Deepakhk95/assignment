@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviornment{
+    environment{
         BRANCH = 'main'
         GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
     }
