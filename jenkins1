@@ -9,8 +9,6 @@ pipeline {
                 branch 'master'
                 beforeAgent true
             }
-          
-          stage('TESTING') {
                    stage('TESTING1') {
                       steps {
                        script {
@@ -26,8 +24,7 @@ pipeline {
                   }
 				  }
 						stage('TESTING2') {
-                     
-                            steps {
+                         steps {
                                  script {
 								 if(env.BRANCH == 'master') 
                                  {						  
@@ -41,6 +38,5 @@ pipeline {
 						    }
                         }
                 } 
-        }
     }
 }
