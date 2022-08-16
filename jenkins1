@@ -2,7 +2,7 @@ pipeline {
      agent any
        environment {
         BRANCH = "$GIT_BRANCH"
-	GIT_REPO = 'https://github.com/karthikbm1711/jenkins-file.git'
+	GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
     }
        stages {
           stage('TESTING1') {
