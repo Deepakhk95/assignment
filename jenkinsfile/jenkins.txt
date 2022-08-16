@@ -9,7 +9,7 @@ pipeline {
     stages{
         stage('Test') {
             steps{
-                git branch: $BRANCH, url: $GIT_REPO 
+                git branch: env.BRANCH, url: env.GIT_REPO 
                 echo"this is test1 stage"
             }
         }
