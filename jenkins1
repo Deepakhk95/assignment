@@ -1,38 +1,46 @@
 pipeline {
-    agent any
-    environment{
+     agent any
+       environment {
         BRANCH = 'master'
-        GIT_REPO = 'https://github.com/Deepakhk95/assignment.git'
+        GIT_REPO = 'https://github.com/Halesh1807/batch2-assignment.git'
     }
-    stages{
-        stage('Test') {
-            steps {
-                script {
-                    if(env.BRANCH == 'master') 
+       stages {
+        when {
+                branch 'master'
+                beforeAgent true
+            }
+          
+          stage('TESTING') {
+                   stage('TESTING1') {
+                      steps {
+                       script {
+                          if(env.BRANCH == 'master') 
                         {						  
-                          sh 'echo "This is a TESTING stage"'
-                        }
+                          sh 'echo "This is a TESTING1 stage"'
+                          sh 'sleep 3'
+						}
 						else {
-						   error("Build failed")
+						   error("Build failed because of this and that")
                        }
                     }
-                }
-                
-                git branch: env.BRANCH, url: env.GIT_REPO 
-                echo"this is test1 stage"
-        }
-            }
-        stage('Test2') {
-            steps {
-                script {
-						 if(env.BRANCH == 'master') 
-                            {						  
-                             sh 'echo "This is a TESTING1 stage"'
-                            }
-						    else {
-						    error("Build failed")
+                  }
+				  }
+						stage('TESTING2') {
+                     
+                            steps {
+                                 script {
+								 if(env.BRANCH == 'master') 
+                                 {						  
+                                      sh 'echo "This is a TESTING1 stage"'
+                                      sh 'sleep 3'
+						         }
+						           else {
+						             error("Build failed because of this and that")
                        }
-            }
+                       
+						    }
+                        }
+                } 
         }
     }
 }
